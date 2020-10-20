@@ -2,8 +2,9 @@
 % Matlab GPU library first (see README files for platform-specific
 % information)
 
-    enableStableMode = true;
-    
+   % enableStableMode = true;
+     enableStableMode = false;
+     
     mexcuda -largeArrayDims mexThSpkPC.cu
     mexcuda -largeArrayDims mexGetSpikes2.cu
     
