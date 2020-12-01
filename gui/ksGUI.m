@@ -889,7 +889,7 @@ classdef ksGUI < handle
                     
                     connInChList = obj.P.chanMap.connected(chList);
                     
-                    cmconn = obj.P.chanMap.chanMap(obj.P.chanMap.connected);
+                    cmconn = obj.P.chanMap.chanMap(logical(obj.P.chanMap.connected));
                                         
                     chListW = NaN(size(chList)); % channels within the processed data
                     for q = 1:numel(chList)

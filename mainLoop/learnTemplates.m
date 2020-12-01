@@ -1,7 +1,7 @@
 function rez = learnTemplates(rez, iorder)
 % This is the main optimization. Takes the longest time and uses the GPU heavily.  
 
-rez.ops.fig = getOr(rez.ops, 'fig', 1); % whether to show plots every N batches
+rez.ops.fig = getOr(rez.ops, 'fig', 0); % whether to show plots every N batches
 
 % Turn on sorting of spikes before subtracting and averaging in mpnu8
 rez.ops.useStableMode = getOr(rez.ops, 'useStableMode', 1);
