@@ -20,5 +20,5 @@ else
     rez.WA = [];
 end
 
-rez.ops.fig = 0;
+rez.ops.fig = getOr(rez.ops, 'fig', 0);
 rez         = runTemplates(rez);
