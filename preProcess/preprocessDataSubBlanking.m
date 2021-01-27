@@ -106,8 +106,8 @@ for ibatch = 1:Nbatch
     startSample = (offset/NchanTOT)/2;
     endSample   = (startSample + NTbuff) - 1;
     
-    possibleNoise = startSample <= noisePeriods.endSample;
-    confirmedNoise = find(endSample >= noisePeriods.startSample(possibleNoise));
+    possibleNoise = find(startSample <= noisePeriods.endSample);
+    confirmedNoise = possibleNoise( endSample >= noisePeriods.startSample(possibleNoise) );
 
     if ~isempty(confirmedNoise)
         for j = 1:length(confirmedNoise)
@@ -127,6 +127,7 @@ for ibatch = 1:Nbatch
 
     datcpu  = gather(int16(datr)); % convert to int16, and gather on the CPU side
     fwrite(fidW, datcpu, 'int16'); % write this batch to binary file
+    
 end
 
 rez.Wrot    = gather(Wrot); % gather the whitening matrix as a CPU variable
