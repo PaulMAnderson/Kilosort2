@@ -81,10 +81,10 @@ end
 
 % Assign to struct
 
-noisePeriods.startSample = startSample;
-noisePeriods.endSample = endSample;
-noisePeriods.startChannel = startChannel;
-noisePeriods.endChannel = endChannel;
+noisePeriods.startSample = startSample(:);
+noisePeriods.endSample = endSample(:);
+noisePeriods.startChannel = startChannel(:);
+noisePeriods.endChannel = endChannel(:);
 
 
 
