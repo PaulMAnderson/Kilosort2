@@ -16,7 +16,7 @@ if width(noiseTable) == 3
                 startChannel(count) = str2num(channels{1});
                 endChannel(count) = str2num(channels{2});
 
-                if strcmp(noiseTable.State{tableRow+1},'-')
+                if tableRow < height(noiseTable)&& strcmp(noiseTable.State{tableRow+1},'-')
                     error('Consecutive channel removal events, blanking poinst must be terminated');
                 end
             case '+'
@@ -52,6 +52,32 @@ end
 if startSample(1) > endSample(1)
     error('Problem with the first start time to blank')
 end
+
+for j = 1:length(startChannel)
+    switch startChannel(j)
+        case 0
+            startChannel(j) = 1;
+        case 64
+            startChannel(j) = 65;
+        case 128
+            startChannel(j) = 129;
+        case 192
+            startChannel(j) = 193;
+    end
+end
+for j = 1:length(endChannel)
+    switch endChannel(j)
+        case 63
+            endChannel(j) = 64;
+        case 127
+            endChannel(j) = 128;
+        case 191
+            endChannel(j) = 192;
+        case 255
+            endChannel(j) = 256;
+    end
+end
+
 
 % Assign to struct
 
