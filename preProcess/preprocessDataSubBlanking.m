@@ -109,13 +109,16 @@ for ibatch = 1:Nbatch
     possibleNoise = find(startSample <= noisePeriods.endSample);
     confirmedNoise = possibleNoise( endSample >= noisePeriods.startSample(possibleNoise) );
 
+    startChannels = dsearchn(chanMap,noisePeriods.startChannel(:));
+    endChannels   = dsearchn(chanMap,noisePeriods.endChannel(:));
+    
     if ~isempty(confirmedNoise)
         for j = 1:length(confirmedNoise)
             samples = startSample:endSample;
             blank = samples >= noisePeriods.startSample(confirmedNoise(j))...
             & samples <= noisePeriods.endSample(confirmedNoise(j));
-            buff(noisePeriods.startChannel(confirmedNoise(j)):...
-            noisePeriods.endChannel(confirmedNoise(j)),blank) = 0;
+            buff(startChannels(confirmedNoise(j)):...
+            endChannels(confirmedNoise(j)),blank) = 0;
         end
     end
 

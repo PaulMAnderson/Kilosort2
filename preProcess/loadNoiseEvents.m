@@ -57,6 +57,8 @@ for j = 1:length(startChannel)
     switch startChannel(j)
         case 0
             startChannel(j) = 1;
+        case 63
+            startChannel(j) = 65;
         case 64
             startChannel(j) = 65;
         case 128
