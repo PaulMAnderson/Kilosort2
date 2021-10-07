@@ -78,7 +78,7 @@ fidW        = fopen(ops.fproc,   'w'); % open for writing processed data
 
 % Check for an event file that defines noise periods
 %if defined calcualte periods
-if isfield(ops,'noiseEventFile')
+if isfield(ops,'noiseEventFile') && ~isempty(ops.noiseEventFile)
     noisePeriods = loadNoiseEvents(rez);
 end
 
