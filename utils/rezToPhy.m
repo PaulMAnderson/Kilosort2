@@ -172,10 +172,12 @@ if ~isempty(savePath)
      %make params file
     if ~exist(fullfile(savePath,'params.py'),'file')
         fid = fopen(fullfile(savePath,'params.py'), 'w');
+% Modified to allow the .dat file and kilosort data to be in seperate directories
+%         [~, fname, ext] = fileparts(rez.ops.fbinary);
+        datPythonPath = strrep(rez.ops.fbinary,'\','/');
 
-        [~, fname, ext] = fileparts(rez.ops.fbinary);
-
-        fprintf(fid,['dat_path = ''',fname ext '''\n']);
+        fprintf(fid,['dir_path = ''./''\n']);
+        fprintf(fid,['dat_path = ''',datPythonPath '''\n']);
         fprintf(fid,'n_channels_dat = %i\n',rez.ops.NchanTOT);
         fprintf(fid,'dtype = ''int16''\n');
         fprintf(fid,'offset = 0\n');

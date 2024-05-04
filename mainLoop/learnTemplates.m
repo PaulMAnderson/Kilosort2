@@ -173,6 +173,7 @@ for ibatch = 1:niter
     % exp(pm) factor several times, and fexp is the resulting update factor
     % for each template
     fexp = exp(double(nsp0).*log(pm));
+%     disp(['Batch #' num2str(ibatch) ' fexp array has size: ' num2str(size(fexp))]);
     fexp = reshape(fexp, 1,1,[]);
     dWU = dWU .* fexp + (1-fexp) .* (dWU0./reshape(max(1, double(nsp0)), 1,1, []));
 
